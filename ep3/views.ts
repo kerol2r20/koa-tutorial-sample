@@ -7,16 +7,16 @@ import Views = require('koa-views');
 const app = new Koa();
 const router = new Router();
 
-app.use(Views(Path.join(__dirname, 'views'), {
-    extension: 'pug',                   // 預設模板的副檔名為.pug
+app.use(Views(Path.join(__dirname, 'views'), {  // 指定模板放置的資料夾，使用Path.join()方法來串接路徑
+    extension: 'pug',                           // 預設模板的副檔名為.pug
     map: {
-        pug: 'pug',                     // 映射.pug檔到pug模板引擎
+        pug: 'pug',                             // 映射.pug檔到pug模板引擎
     },
 }));
 
 router.get('/loop/:VideoID', async (ctx) => {
-    await ctx.render('index', {         // 因為我們有設定預設副檔名為.pug，所以不需要打index.pug
-        VideoID: ctx.params.VideoID,    // 將變數傳給模板引擎
+    await ctx.render('index', {                 // 因為我們有設定預設副檔名為.pug，所以不需要打index.pug
+        VideoID: ctx.params.VideoID,            // 將變數傳給模板引擎
     });
 });
 
