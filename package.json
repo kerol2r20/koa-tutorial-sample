@@ -4,11 +4,14 @@
     "@types/koa": "^2.0.39",
     "@types/koa-logger": "^2.0.2",
     "@types/koa-router": "^7.0.23",
+    "@types/koa-views": "^2.0.2",
     "@types/q": "^1.0.6",
     "express": "^4.16.2",
     "koa": "^2.3.0",
     "koa-logger": "^3.1.0",
     "koa-router": "^7.2.1",
+    "koa-views": "^6.1.1",
+    "pug": "^2.0.0-rc.4",
     "q": "^1.5.1"
   }
 }
