@@ -15,7 +15,7 @@ app.use(Views(Path.join(__dirname, 'views'), {  // 指定模板放置的資料�
 }));
 
 router.get('/loop/:VideoID', async (ctx) => {
-    await ctx.render('index', {                 // 因為我們有設定預設副檔名為.pug，所以不需要打index.pug
+    await ctx.render('looper', {                 // 因為我們有設定預設副檔名為.pug，所以不需要打index.pug
         VideoID: ctx.params.VideoID,            // 將變數傳給模板引擎
     });
 });
