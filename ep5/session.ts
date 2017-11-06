@@ -22,15 +22,15 @@ app.use(Session(app));
 router.get('/loop', async (ctx) => {
     const VideoID = ctx.query.VideoID ? ctx.query.VideoID : ctx.cookies.get('VideoID');
     ctx.cookies.set('VideoID', VideoID);
-    if(ctx.session) {
+    if(ctx.session) {                                                   // 判斷ctx.session是否存在
         if(VideoID) {
             if(ctx.session.orderedVideos){
                 if(ctx.session.orderedVideos.indexOf(VideoID)==-1){
-                    ctx.session.orderedVideos.push(VideoID);
+                    ctx.session.orderedVideos.push(VideoID);            // 將請求過的影片放入ctx.session.orderedVideos中
                 }
             }
             else {
-                ctx.session.orderedVideos = [];
+                ctx.session.orderedVideos = [];                         // 如果ctx.session.orderedVideos不存在，則初始化他為一個空陣列
             }
         }
     }
@@ -41,9 +41,9 @@ router.get('/loop', async (ctx) => {
 });
 
 router.get('/reset', async (ctx) => {
-    ctx.cookies.set('VideoID', undefined);
-    ctx.session = null;
-    ctx.redirect('/loop');
+    ctx.cookies.set('VideoID', undefined);                              // 清除Cookie
+    ctx.session = null;                                                 // 清除Session
+    ctx.redirect('/loop');                                              // 重導向回/loop頁面
 });
 
 app.use(router.routes()).use(router.allowedMethods());
